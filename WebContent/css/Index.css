@@ -1,0 +1,7 @@
+@CHARSET "ISO-8859-1";
+
+#pageWrapper{
+	width: 980px;
+	margin: 0px auto;
+	text-align: center;
+}

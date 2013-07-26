@@ -1,0 +1,23 @@
+<script type="text/html" id="tmpl-MainContainer">
+	<div class="MainContainer">
+		<div id="pageWrapper">
+			<h1>Account</h1>
+			<div id="accountForm">
+				<p id="idTitle">Id</p><input type="text" id="ownerId"/>
+				<p>FirstName</p><input type="text" id="firstname"/>
+				<p>LastName</p><input type="text" id="lastname"/>
+				<p>UserName</p><input type="text" id="username"/>
+				<p>Action</p><select id="actionSelector">
+					<option value="add">Add</option>
+					<option value="update">Update</option>
+					<option value="search">Search</option>
+					<option value="delete">Delete</option>
+				</select>
+			</div>
+			<div>
+				<button class="requestBtn btn btn-primary">Action</button>
+			</div>
+			<div id="result"></div>
+		</div>
+	</div>
+</script>
