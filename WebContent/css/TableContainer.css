@@ -1,30 +1,8 @@
 @CHARSET "ISO-8859-1";
 
-.TableWrapper{
-	/*border: solid 1px red;*/
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-left: 200px;
-}
-
 #table{
 	/*border: solid 1px green;*/
 	width: 500px;
-}
-
-#pager{
-	width: 500px;
-}
-
-.showTblBtn{
-	float: left;
-	margin-left: 280px; 
-}
-
-.fillDataBtn{
-	display: none;
-	float: right;
-	margin-right: 280px;
 }
 
 .btnWrapper{
@@ -33,6 +11,25 @@
 	position: relative;
 }
 
+.fillDataBtn{
+	display: none;
+	float: right;
+	margin-right: 280px;
+}
+
 .searchDataBtn{
 	display: none;
+}
+
+.TableWrapper{
+	/*border: solid 1px red;*/
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 200px;
+	overflow: hidden;
+	position: relative;
+}
+
+#pager{
+	width: 500px;
 }

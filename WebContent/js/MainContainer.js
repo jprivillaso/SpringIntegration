@@ -5,7 +5,10 @@
 		}, 
 		
 		postDisplay : function() {
-			this.$el.trigger("DO_SELECT_FILL_DATA");
+			//this.$el.trigger("DO_SELECT_FILL_DATA");
+			$('.fillDataBtn').fadeIn(0);
+			$('.searchDataBtn').fadeIn(0);
+			$('.paginationFilters').fadeIn(0);
 		},
 		
 		events : {

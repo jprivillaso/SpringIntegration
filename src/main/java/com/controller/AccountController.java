@@ -1,8 +1,10 @@
 package com.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,9 +69,19 @@ public class AccountController {
 	}
 		
 	@RequestMapping(value="/getAllAccounts")
-	public @ResponseBody List<Account> getAllAccounts(){
-		List<Account> accountsList = repository.findAll();
+	public @ResponseBody Page<Account> getAllAccounts(@RequestParam("sidx") String sidx,
+			@RequestParam("sord") String sord,
+			@RequestParam("rowsxView") int rowsxView,
+			@RequestParam("pageNumber") int pageNumber){
 		
-		return accountsList;
+		PageRequest request;
+
+		if(sord.toLowerCase().equals("desc")){
+			request = new PageRequest(pageNumber - 1, rowsxView, Sort.Direction.DESC, sidx);
+		}else{
+			request = new PageRequest(pageNumber - 1, rowsxView, Sort.Direction.ASC, sidx);
+		}
+		
+	    return repository.findAll(request);
 	}
 }

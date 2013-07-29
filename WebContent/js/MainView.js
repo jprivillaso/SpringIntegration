@@ -11,8 +11,6 @@
 			"click; .sendBtn" : function(event) {
 				this.$el.trigger("DO_SELECT_BUTTON");
 				$('.sendBtn').fadeOut(0);
-				$('.fillDataBtn').fadeIn(0);
-				$('.searchDataBtn').fadeIn(0);
 			},
 		},
 		

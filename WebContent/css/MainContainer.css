@@ -8,5 +8,13 @@
 	margin-top: 30px;
 }
 
+#result p{
+	color: red;
+}
+
 #pageWrapper{
+}
+
+.paginationFilters{
+	display: none;
 }

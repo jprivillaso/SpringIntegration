@@ -26,14 +26,11 @@ var ajaxCall = function(result, url, action){
 		type : 'GET',
 		url : url,
 		success : function(result) {
+			console.log(result);
 			if(result != null && result != ""){
 				if(action == "search"){
 					$('#result').html('<p>' + result.username + '</p>');
-				}else{
-					$('#result').html('<p>' + result + '</p>');
 				}
-			}else{
-				$('#result').html('<p> No information found </p>');
 			}
 		},
 		error : function() {

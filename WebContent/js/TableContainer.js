@@ -1,19 +1,42 @@
 (function() {
 
-	var colNames1 = [ 'id', 'username', 'firstname', 'lastname' ];
-	var colModel1 = [ 
+	var colNamesList = [ 'id', 'username', 'firstname', 'lastname' ];
+	var colModelList = [ 
          {name : 'id', index : 'id',editable : true},
          {name : 'username', index : 'username', editable : true},
          {name : 'firstname', index : 'firstname', editable : true},
          {name : 'lastname', index : 'lastname', editable : true} ];
 	
 	var data = [];
+	
+	var fillTable = function() {
+		console.log('before displaying the data in the grid');
+		for ( var i = 0; i <= data.length; i++) {
+			jQuery("#table").jqGrid('addRowData', i + 1, data[i]);
+		}
+	};
+	
 	var initTable = function() {
 		$("#table").jqGrid('GridUnload');
 		jQuery("#table").jqGrid({
-			datatype : "local",
-			colNames : colNames1, 
-			colModel : colModel1,
+			datatype : "json",
+			url: 'restApi/account/getAllAccounts?pageNumber=' + 
+				$('#viewId').val() + '&rowsxView=' + 
+					$('#rowsxView').val(),
+			jsonReader: {
+                repeatitems: false,
+                page:  function(obj) { return 1; },
+                total: function(obj) { return 1; },
+                records: function(obj) { 
+                	data = [];	
+                	for(var i = 0; i< obj.content.length; i++){
+                		data.push(obj.content[i]);
+                	}
+                	fillTable();
+                },
+            },
+			colNames : colNamesList, 
+			colModel : colModelList,
 			rowList : [ 5, 10, 15 ],
 			pager : '#pager',
 			sortname : 'id',
@@ -21,21 +44,6 @@
 			sortorder : "asc",
 			caption : "Account List",
 			height: "auto"
-		});
-		for ( var i = 0; i <= data.length; i++) {
-			jQuery("#table").jqGrid('addRowData', i + 1, data[i]);
-		}
-	};
-
-	var fillData = function() {
-		$.ajax({
-			datatype : 'JSON',
-			url : 'restApi/account/getAllAccounts',
-			success : function(result){ 				
-				data = [];
-				data.push(result);
-				initTable();
-			}
 		});
 	};
 
@@ -47,14 +55,9 @@
 		},
 
 		postDisplay : function() {
-
 		},
 
 		events : {
-			'click; .showTblBtn' : function(event) {
-				this.$el.trigger("DO_SELECT_SHOW_TABLE");
-			},
-
 			'click; .fillDataBtn' : function(event) {
 				this.$el.trigger("DO_SELECT_FILL_DATA");
 			},
@@ -65,13 +68,8 @@
 		},
 
 		docEvents : {
-			'DO_SELECT_SHOW_TABLE' : function(event) {
-				console.log('after function btn pressed');
-				initTable();
-			},
-
 			'DO_SELECT_FILL_DATA' : function() {
-				fillData();
+				initTable();
 			},
 			
 			'DO_SELECT_SEARCH' : function(event) {
@@ -84,7 +82,7 @@
 					var data = {
 						'id' : ret.id,
 					};
-					return ajaxCall(data, url);
+					return ajaxCall(data, url, "search");
 				}else{
 					alert('select a row please');
 				}
