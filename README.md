@@ -24,3 +24,6 @@ You can also check this links:
 
 www.britesnow.com for Brite.js
 www.springsource.org for Spring Framework and Spring Data Documentation
+
+As it is an eclipse project you can just import it as an existing workspace. It will seems to be an error into the
+project but you can run it anyway, it's the JQuery UI Theme Library, so go on.
