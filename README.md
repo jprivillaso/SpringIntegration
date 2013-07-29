@@ -5,7 +5,7 @@ SpringIntegration
 
 An example of Spring integration in a simple Java Web Application using: 
 
-HTML, Ajax, Brite.js, Bootstrap, Jquery, and Jqueyy UI themes in the front-end
+HTML, Ajax, Brite.js, Bootstrap, Jquery, and Jqueyy UI themes in the front-end and /n
 Spring Framework, Spring Data, Hibernate, JPA in the back-end.
 
 
