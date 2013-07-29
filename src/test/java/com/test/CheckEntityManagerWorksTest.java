@@ -1,6 +1,7 @@
 package com.test;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,17 +17,9 @@ public class CheckEntityManagerWorksTest {
 	@Autowired
 	private AccountRepository accountsRepository;
 
+	@Test
 	public void testPersistence() {
-			
-		Account account = accountsRepository.findOne(1);
-		System.out.println("Account username: " + account.getUsername());
-		
-		/*
-		Accounts account2 = new Accounts();
-		account2.setFirstname("Pedro");
-		account2.setUsername("dani");
-		account2.setLastname("Vergara");
-		accountsRepository.save(account2);*/
+		Account account = accountsRepository.findOne(2);
+		assertNotNull(account);
 	}
-
 }
