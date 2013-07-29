@@ -17,17 +17,17 @@
 	};
 	
 	var initTable = function() {
+		var rowsxView = $('#rowsxView').val(); 
 		$("#table").jqGrid('GridUnload');
 		jQuery("#table").jqGrid({
 			datatype : "json",
-			url: 'restApi/account/getAllAccounts?pageNumber=' + 
-				$('#viewId').val() + '&rowsxView=' + 
-					$('#rowsxView').val(),
+			url: 'restApi/account/getAllAccounts?rowsxView=' + rowsxView,
 			jsonReader: {
-                repeatitems: false,
-                page:  function(obj) { return 1; },
-                total: function(obj) { return 1; },
+                repeatitems: true,
+                page: 'page',
+                total: 'totalPages',
                 records: function(obj) { 
+                	console.log(obj);
                 	data = [];	
                 	for(var i = 0; i< obj.content.length; i++){
                 		data.push(obj.content[i]);

@@ -72,7 +72,7 @@ public class AccountController {
 	public @ResponseBody Page<Account> getAllAccounts(@RequestParam("sidx") String sidx,
 			@RequestParam("sord") String sord,
 			@RequestParam("rowsxView") int rowsxView,
-			@RequestParam("pageNumber") int pageNumber){
+			@RequestParam("page") int pageNumber){
 		
 		PageRequest request;
 
