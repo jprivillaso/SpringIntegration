@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,13 +18,6 @@ public class AccountController {
 	
 	@Autowired
 	AccountRepository repository;
-	
-	@RequestMapping(value="/getAccountUser")
-	public @ResponseBody String getAccountUser(@RequestParam("id") int id){
-		Account account = repository.findOne(id);
-		return "The account owner is: " + account.getFirstname() 
-				+ "-" + account.getLastname();
-	}
 	
 	@RequestMapping(value="/search")
 	public @ResponseBody Account getAccountById(@RequestParam("id") int id){
@@ -67,11 +59,11 @@ public class AccountController {
 	public @ResponseBody void deletAccount(@RequestParam("id") int id){
 		repository.delete(id);
 	}
-		
+	
 	@RequestMapping(value="/getAllAccounts")
 	public @ResponseBody Page<Account> getAllAccounts(@RequestParam("sidx") String sidx,
 			@RequestParam("sord") String sord,
-			@RequestParam("rowsxView") int rowsxView,
+			@RequestParam("rows") int rowsxView,
 			@RequestParam("page") int pageNumber){
 		
 		PageRequest request;
@@ -81,7 +73,6 @@ public class AccountController {
 		}else{
 			request = new PageRequest(pageNumber - 1, rowsxView, Sort.Direction.ASC, sidx);
 		}
-		
 	    return repository.findAll(request);
 	}
 }
