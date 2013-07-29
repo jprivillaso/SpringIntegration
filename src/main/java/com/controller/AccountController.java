@@ -20,8 +20,8 @@ public class AccountController {
 	AccountRepository repository;
 	
 	@RequestMapping(value="/search")
-	public @ResponseBody Account getAccountById(@RequestParam("id") int id){
-		return repository.findOne(id);
+	public @ResponseBody Account getAccountById(@RequestParam("id") int accountId){
+		return repository.findOne(accountId);
 	}
 	
 	@RequestMapping(value="/save")
