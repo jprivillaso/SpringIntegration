@@ -17,3 +17,6 @@ Eclipse Kepler
 Tomcat Server 7.0
 MySql database
 
+It is really important to understand that this application is made with Brite.js, so you will
+need former knowledge of it to understand the division of view layers.
+
