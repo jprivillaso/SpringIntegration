@@ -20,3 +20,7 @@ MySql database
 It is really important to understand that this application is made with Brite.js, so you will
 need former knowledge of it to understand the division of view layers.
 
+You can also check this links:
+
+www.britesnow.com for Brite.js
+www.springsource.org for Spring Framework and Spring Data Documentation
