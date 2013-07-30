@@ -6,14 +6,18 @@
 	<persistence-unit name="persUnit" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
+			<!-- Database properties -->
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/studentdb?createDatabaseIfNotExist=true" />
 			<property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="" />
 			
+			<!-- The dialect refers to the database that you are using -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+			<!-- True if you want to print in the console the SQL that Hibernate is using -->
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="create-update" />
+			<!-- Here you can find the possible values for hibernate.hbm2ddl http://stackoverflow.com/questions/438146/hibernate-hbm2ddl-auto-possible-values-and-what-they-do -->
+			<property name="hibernate.hbm2ddl.auto" value="create-update" /> 
 		</properties>
 	</persistence-unit>
 </persistence>
